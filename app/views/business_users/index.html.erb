@@ -1,0 +1,12 @@
+<h1>Welcome restaurant owners</h1>
+<p>You can create a profile of your restaurants here and let the whole world know about your business.</p>
+
+<%= link_to "Sign up", new_business_user_path %>
+
+<h3>Here are all the restaurants that have joined us:</h3>
+<% @business_user.each do |restaurant|%>
+<%= restaurant.name %>
+<%= restaurant.phone %>
+<br>
+<% end %>
+

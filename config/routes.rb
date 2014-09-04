@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :business_users
+
   get 'seatyourself/index'
 
 
