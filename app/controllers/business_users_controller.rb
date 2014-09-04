@@ -4,7 +4,7 @@ class BusinessUsersController < ApplicationController
   end
 
   def show
-  	@business_user = BusinessUser.find(params[:id])
+  	@business_user = current_user
   end
 
   def new
@@ -12,11 +12,11 @@ class BusinessUsersController < ApplicationController
   end
 
   def edit
-  	@business_user = BusinessUser.find(params[:id])
+  	@business_user = current_user
   end
 
   def update
-  	@business_user = BusinessUser.find(params[:id])
+  	@business_user = current_user
   	if @business_user.update_attributes(bu_params)
   		redirect_to business_user_path(@business_user), notice: "Your profile is updated!"
   	else
@@ -27,7 +27,7 @@ class BusinessUsersController < ApplicationController
   def create
   	@business_user = BusinessUser.new (bu_params)
   	if @business_user.save
-  		redirect_to business_user_path(@business_user), notice: "Signed up!"
+  		redirect_to new_session_path, notice: "Signed up successfully!  Please log in again and fill in the details about your restaurant."
   	else
   		render "new"
   	end
