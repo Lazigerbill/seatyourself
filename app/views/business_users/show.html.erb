@@ -1,8 +1,30 @@
-<h1>Restaurant profile</h1>
-<p>Here are the details for this one restaurant</p>
+<h1>Business User profile</h1>
+<p>This is my business user profile</p>
 
-
-<%= render "restaurant_form" %>
+<%= render "bu_form" %>
 
 <%= link_to "Back", business_users_path %>
+
+<h1>My Restaurants</h1>
+
+<% if current_bu.restaurants.count == 0 %>
+	<%= "You currently don't have any restaurants registered with us, please fill in the form below:" %>
+<% else %>
+	<p>You currently have registered <%= current_bu.restaurants.count %> restaurants!</p>
+	<% current_bu.restaurants.each do |restaurant| %>
+	<%= link_to restaurant.name, edit_restaurant_path(restaurant) %>
+	<br/>
+	<% end %>
+<% end %>
+
+<h1>Add New Restaurant</h1>
+
+<%= render "/restaurants/form" %>
+
+<p>	<% if current_bu %>
+	 	Signed in as <%= current_bu.username %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+	<% else %>
+		<%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_business_user_path %>
+	<% end %>
+</p>
 

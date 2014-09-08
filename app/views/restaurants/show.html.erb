@@ -1,0 +1,17 @@
+<p>	<% if current_user %>
+	 	Signed in as <%= current_user.email %>. <%= link_to "Log out", user_session_path("current"), :method => :delete %>
+	<% else %>
+		<%= link_to "Log in", new_user_session_path %> or <%= link_to "Sign up", new_user_path %>
+	<% end %>
+</p>
+
+<h1>Restaurant Profile</h1>
+
+<h2><%= @restaurant.name %></h2>
+<h4><%= @restaurant.cuisine %></h4>
+<%= image_tag(@restaurant.picture_url) %>
+
+<p>Restaurant Name <%=@restaurant.name %> </p>
+<p>Phone number: <%=@restaurant.phone %></p>
+<p>Restaurant Capacity <%= @restaurant.capacity %></p>
+<p>Address: <%=@restaurant.address %></p>

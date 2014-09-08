@@ -1,7 +1,28 @@
+<p>	<% if current_user %>
+	 	Signed in as <%= current_user.email %>. <%= link_to "Log out", user_session_path("current"), :method => :delete %>
+	<% else %>
+		<%= link_to "Log in", new_user_session_path %> or <%= link_to "Sign up", new_user_path %>
+	<% end %>
+</p>
+
 <h1>Welcome to SeatYourself</h1>
-<p>The first phase on the project is to built a CRUD function for restaurant owners to create their own profile.</p>
+<h5>The first phase on the project is to built a CRUD function for restaurant owners to create their own profile.</h5>
 <p>Restaurant owners can signup or login to :</p>
 <p>CRUD their own resaurant profile</p>
 <p>anyone can view the list of restuarants with full details.</p>
+
+<div></div>
+
+<h5>The second phase on the project is to create user log in</h5>
+<p>Users can log in and post reviews</p>
+<p>Users can make reservations</p>
+<p>Users can view the comments they made and view their reservations</p>
+
+<h3>Here are all the restaurants that have joined us:</h3>
+<% @restaurant.each do |restaurant|%>
+<%= link_to restaurant.name, restaurant_path(restaurant) %>
+<%= restaurant.phone %>
+<br>
+<% end %>
 
 Business Owners<%= link_to "<<Enter here>>",business_users_path %>

@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
+
+
+  get 'reservations/new'
+
+  get 'reservations/create'
+
+  get 'reservations/destroy'
+
+  resources :user_sessions, only: [:new, :create, :destroy]
   resources :sessions, only: [:new, :create, :destroy] 
   resources :business_users
+  resources :restaurants
+  resources :users, ony: [:new, :create]
 
-  get 'seatyourself/index'
+  resources :seatyourself
 
 
   # The priority is based upon order of creation: first created -> highest priority.

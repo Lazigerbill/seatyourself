@@ -5,10 +5,18 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-  	@current_user ||= BusinessUser.find(session[:user_id]) if session[:user_id]
-  	end
+  	@current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  
+  private
+  def current_bu
+    @current_bu ||= BusinessUser.find(session[:user_id]) if session[:user_id]
+  end
+
+
 
   	helper_method :current_user
+    helper_method :current_bu
 
 
 
