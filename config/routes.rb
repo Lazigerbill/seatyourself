@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :sessions, only: [:new, :create, :destroy] 
   resources :business_users
+  resources :reservations
   resources :restaurants do
-    resources :reservations, only: [:new, :create, :destroy]
+    resources :reservations, only: [:new, :create, :destroy], shallow: true
   end
   resources :users, ony: [:new, :create] do
-    resources :reservations, only: [:new, :create, :destroy]
+    resources :reservations, only: [:new, :create, :destroy], shallow: true
   end
 
   resources :seatyourself

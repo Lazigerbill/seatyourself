@@ -3,6 +3,11 @@ class ReservationsController < ApplicationController
   	@reservation = Reservation.new
   end
 
+  def show
+    @reservation = Reservation.find(params[:id])
+  end
+
+
   def create
   	@restaurant = Restaurant.find(params[:restaurant_id])
   	@reservation = @restaurant.reservations.build(reservation_params)
@@ -15,6 +20,9 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to seatyourself_index_path
   end
 
 

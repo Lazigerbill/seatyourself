@@ -1,3 +1,9 @@
+<p>	<% if current_bu %>
+	 	Signed in as <%= current_bu.username %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+	<% else %>
+		<%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_business_user_path %>
+	<% end %>
+</p>
 <h1>Business User profile</h1>
 <p>This is my business user profile</p>
 
@@ -12,8 +18,17 @@
 <% else %>
 	<p>You currently have registered <%= current_bu.restaurants.count %> restaurants!</p>
 	<% current_bu.restaurants.each do |restaurant| %>
-	<%= link_to restaurant.name, edit_restaurant_path(restaurant) %>
-	<br/>
+		<%= link_to restaurant.name, edit_restaurant_path(restaurant) %><br/>
+		<br>Bookings:</br>
+		<% restaurant.reservations.each do |reservation| %>
+			<%= reservation.user.first_name %> 
+			<%= reservation.user.last_name %>
+			<%= reservation.user.phone %>
+			for <%= reservation.persons  %> persons
+			<%= reservation.date.strftime("%A, %b %d")%> @
+			<%= reservation.time.strftime("%I:%M %p") %>
+		</br>
+		<% end %>
 	<% end %>
 <% end %>
 
@@ -21,10 +36,4 @@
 
 <%= render "/restaurants/form" %>
 
-<p>	<% if current_bu %>
-	 	Signed in as <%= current_bu.username %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-	<% else %>
-		<%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_business_user_path %>
-	<% end %>
-</p>
 

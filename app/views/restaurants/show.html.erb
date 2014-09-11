@@ -17,19 +17,21 @@
 <p>Address: <%=@restaurant.address %></p>
 
 <h3>Make your reservation</h3>
-<%= form_tag(restaurant_reservations_path(@restaurant)) do %>
-<%= fields_for :reservation do |ff| %>
+<% if current_user %>
+	<%= form_tag(restaurant_reservations_path(@restaurant)) do %>
+	<%= fields_for :reservation do |ff| %>
 
-<%= label_tag :persons %>
-<%= ff.select(:persons, options_for_select([["Please choose",0],["1~2",2],["3~4",4],["4~6",6],["6~8",8]])) %>
-<%= label_tag :date %>
-<%= ff.select(:date, options_for_select([["Please choose",0],["Today, #{Time.now.utc.strftime("%A, %b %d")}", Time.now.utc.strftime("%b %d, %Y")], [ 1.day.from_now.strftime("%A, %b %d"), 1.day.from_now.strftime("%b %d, %Y")], [ 2.day.from_now.strftime("%A, %b %d"), 2.day.from_now.strftime("%b %d, %Y")]])) %>
-<%= label_tag :time %>
-<%= ff.select(:time, options_for_select([["Please choose",0],["17:00"],["18:00"],["19:00"],["20:00"],["21:00"]])) %>
-<% end %>
-
-<%= submit_tag :submit %>
-
+	<%= label_tag :persons %>
+	<%= ff.select(:persons, options_for_select([["Please choose",0],["1~2",2],["3~4",4],["4~6",6],["6~8",8]])) %>
+	<%= label_tag :date %>
+	<%= ff.select(:date, options_for_select([["Please choose",0],["Today, #{Time.now.utc.strftime("%A, %b %d")}", Time.now.utc.strftime("%b %d, %Y")], [ 1.day.from_now.strftime("%A, %b %d"), 1.day.from_now.strftime("%b %d, %Y")], [ 2.day.from_now.strftime("%A, %b %d"), 2.day.from_now.strftime("%b %d, %Y")]])) %>
+	<%= label_tag :time %>
+	<%= ff.select(:time, options_for_select([["Please choose",0],["17:00"],["18:00"],["19:00"],["20:00"],["21:00"]])) %>
+	<% end %>
+	<%= submit_tag :submit %>
+	<% end %>
+<% else %>
+	<%= link_to "Log in", new_user_session_path %> or <%= link_to "Sign up", new_user_path %> to make reservations.
 <% end %>
 
 

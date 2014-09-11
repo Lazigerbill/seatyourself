@@ -8,7 +8,7 @@
 	<%= f.label :address %> </br>
 	<%= f.text_field :address %> </br>
 	<%= f.label :cuisine %> </br>
-	<%= f.select(:cuisine, options_for_select([["Chinese"], ["Thai"],["Mexican"], ["Fusion"], ["Korean"]],@restaurant.cuisine)) %> </br>
+	<%= f.select(:cuisine, options_for_select([["Please choose"],["Chinese"], ["Thai"],["Mexican"], ["Fusion"], ["Korean"]],@restaurant.cuisine)) %> </br>
 	<%= f.label :capacity %> </br>
 	<%= f.text_field :capacity %> </br>	
 	<%= f.label :picture_url %> </br>
