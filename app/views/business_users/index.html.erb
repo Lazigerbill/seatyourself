@@ -1,15 +1,8 @@
 <h1>Welcome restaurant owners</h1>
 <p>You can create a profile of your restaurants here and let the whole world know about your business.</p>
 
-<p>	<% if current_bu %>
-	 	Signed in as <%= current_bu.username %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-	<% else %>
-		<%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_business_user_path %>
-	<% end %>
-</p>
-
 <h3>Here are all the restaurants that have joined us:</h3>
-<% @restaurant.each do |restaurant|%>
+<% @restaurants.each do |restaurant|%>
 <%= restaurant.name %>
 <%= restaurant.phone %>
 <br>

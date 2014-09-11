@@ -1,8 +1,7 @@
 class BusinessUsersController < ApplicationController
   layout "business_user"
   def index
-  	@business_user = BusinessUser.all
-    @restaurant = Restaurant.all
+    @restaurants = Restaurant.all
   end
 
   def show
@@ -32,9 +31,9 @@ class BusinessUsersController < ApplicationController
   def create
   	@business_user = BusinessUser.new (bu_params)
   	if @business_user.save
-  		redirect_to new_session_path, notice: "Signed up successfully!  Please log in again and fill in the details about your restaurant."
+  		redirect_to business_users_path, notice: "Signed up successfully!  Please log in again and fill in the details about your restaurant."
   	else
-  		render "new"
+  		render new_business_user_path
   	end
   	
   end

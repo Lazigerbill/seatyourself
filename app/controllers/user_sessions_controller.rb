@@ -9,7 +9,8 @@ class UserSessionsController < ApplicationController
   		redirect_to seatyourself_index_path, notice: "Logged in!"
   	else
   		flash.now[:alert] = "Invalid user name or password"
-  		render new_user_session_path
+      @restaurants = Restaurant.all
+  		render "seatyourself/index"
   	end
   end
 

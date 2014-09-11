@@ -3,7 +3,7 @@
 <p>Here are all your reservations:</p>
 <ul>
 	<% @user.reservations.each do |reservation| %>
-	<li><%= link_to reservation.restaurant.name, restaurant_path(reservation.restaurant) %> for <%= reservation.persons %> persons on <%= reservation.date.strftime("%b %d, %Y") %>
+	<li><%= link_to reservation.restaurant.name, restaurant_path(reservation.restaurant) %> for <%= reservation.persons %> persons on <%= reservation.date.strftime("%b %e, %l:%M %p") %>
 		<%= link_to "Cancel your booking", reservation_path(reservation.id), :method => :delete %>
 		</li>
 	<% end %>

@@ -1,26 +1,9 @@
-
-
+<!-- This is the root page of the app -->
 <h1>Welcome to SeatYourself</h1>
-<h3>For business users</h3>
-<h4>Restaurant owners can signup or login to:</h4>
-<p>
-CRUD their own business user profile</br>
-CRUD their own restaurant profiles</br>
-view all reservations made to the restaurants</br>
-</p>
 
-<h3>For any users</h3>
-<h4>Users can signup or login to:</h4>
-<p>
-CRUD reservations</br>
-anyone can view the list of restuarants with full details.</br>
-</p>
-
-<div></div>
-
-
+<!-- All the registered restaurants are listed here -->
 <h3>Here are all the restaurants that have joined us:</h3>
-<% @restaurant.each do |restaurant|%>
+<% @restaurants.each do |restaurant|%>
 <%= link_to restaurant.name, restaurant_path(restaurant) %>
 <%= restaurant.phone %>
 <br>

@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<!-- This is the layout specifically for business users
+the key features are:
+	check login status
+	show notices and alerts --><!DOCTYPE html>
 <html>
 <head>
   <title>Seatyourself</title>
@@ -7,19 +10,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<p>	<% if current_bu %>
-	 	Wecome back, <%= current_bu.username %>!
-	 	You are signed in as <%= current_bu.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-	<% else %>
-		<%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_business_user_path %>
-	<% end %>
-</p>
+<!-- Notices and alerts are handled here -->
 	<% if flash[:notice] %>
-		<p><%= flash[:notice] %></p>
+		<div class = "notice"><%= flash[:notice] %></div>
 	<% end %>
 	<% if flash[:alert] %>
-		<p><%= flash[:alert] %></p>
-	<% end %>	
+		<div class = "flash"><%= flash[:alert] %></div>
+	<% end %>
+<!-- Check session status here, ask business user to log in or sign out -->
+	<p>	
+		<% if current_bu %>
+		 	Wecome back, <%= current_bu.username %>!
+		 	You are signed in as <%= current_bu.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+		<% else %>
+			<%= form_tag sessions_path do %>
+			<%= label_tag :username %>
+			<%= text_field_tag :username %>
+			<%= label_tag :password %>
+			<%= password_field_tag :password %>
+			<%= submit_tag "Log in" %>
+			<% end %> 
+			or <%= link_to "Sign up", new_business_user_path %>
+		<% end %>
+	</p>
+<!-- This is the navigation bar -->
+	<nav>
+		<%= link_to "Home", seatyourself_index_path %>
+		<%= link_to "About", seatyourself_about_path %>
+	</nav>
 
 
 	

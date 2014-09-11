@@ -1,3 +1,8 @@
+<!-- This is the general layout for non-business users
+the key features are:
+	check login status
+	show notices and alerts -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,11 +12,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<p>	<% if current_user %>
+<!-- Notices and alerts are handled here -->
+	<% if flash[:notice] %>
+		<div class = "notice"><%= flash[:notice] %></div>
+	<% end %>
+	<% if flash[:alert] %>
+		<div class = "flash"><%= flash[:alert] %></div>
+	<% end %>	
+<!-- Check session status here, ask user to log in or sign out -->
+	<p>	
+	<% if current_user %>
 	 	Hello, <%= current_user.first_name %> <%= current_user.last_name %>!
 	 	You are signed in as <%= current_user.email %>. <%= link_to "Log out", user_session_path("current"), :method => :delete %>
 	 	<%= link_to "Manage my reservations", user_path(current_user) %>
-	<% elsif%>
+	<% else%>
 	Log in:
 		<%= form_tag user_sessions_path do %>
 			<%= label_tag :email, "email:" %>
@@ -24,21 +38,13 @@
 	<h5>Business Users <%= link_to ">>enter here<<", business_users_path %></h5>
 	<% end %>
 	</p>
-
-<nav>
-	<%= link_to "Home", seatyourself_index_path %>
-	<%= link_to "About", seatyourself_about_path %>
-</nav>
-
-	<% if flash[:notice] %>
-		<p><%= flash[:notice] %></p>
-	<% end %>
-	<% if flash[:alert] %>
-		<p><%= flash[:alert] %></p>
-	<% end %>	
+<!-- This is the navigation bar -->
+	<nav>
+		<%= link_to "Home", seatyourself_index_path %>
+		<%= link_to "About", seatyourself_about_path %>
+	</nav>
 
 
-	
 	<%= yield %>
 
 

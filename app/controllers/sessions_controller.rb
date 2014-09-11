@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
   		redirect_to business_user_path(user), notice: "Logged in!"
   	else
   		flash.now[:alert] = "Invalid user name or password"
-  		render "new"
+      @restaurants = Restaurant.all
+  		render "business_users/index"
   	end
   end
 

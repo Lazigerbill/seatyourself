@@ -1,8 +1,6 @@
 class SeatyourselfController < ApplicationController
   def index
-  	  @restaurant = Restaurant.all
-  	  @business_user = BusinessUser.all
-  	  @user = User.all
+  	  @restaurants = Restaurant.all
   end
   def show
   	@restaurant = Restaurant.find(params[:id])
