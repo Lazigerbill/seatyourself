@@ -7,4 +7,6 @@ class SeatyourselfController < ApplicationController
   def show
   	@restaurant = Restaurant.find(params[:id])
   end
+  def about
+  end
 end

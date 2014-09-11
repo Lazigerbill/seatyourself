@@ -7,12 +7,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<p>	<% if current_user %>
+	 	Hello, <%= current_user.first_name %> <%= current_user.last_name %>!
+	 	You are signed in as <%= current_user.email %>. <%= link_to "Log out", user_session_path("current"), :method => :delete %>
+	 	<%= link_to "Manage my reservations", user_path(current_user) %>
+	<% elsif%>
+	Log in:
+		<%= form_tag user_sessions_path do %>
+			<%= label_tag :email, "email:" %>
+			<%= text_field_tag :email %>
+			<%= label_tag :password,"password:" %>
+			<%= password_field_tag :password %>
+			<%= submit_tag "Log in" %>
+		<% end %> 
+	or <%= link_to "Sign up", new_user_path %>.
+	<h5>Business Users <%= link_to ">>enter here<<", business_users_path %></h5>
+	<% end %>
+	</p>
+
+<nav>
+	<%= link_to "Home", seatyourself_index_path %>
+	<%= link_to "About", seatyourself_about_path %>
+</nav>
+
 	<% if flash[:notice] %>
 		<p><%= flash[:notice] %></p>
 	<% end %>
 	<% if flash[:alert] %>
 		<p><%= flash[:alert] %></p>
 	<% end %>	
+
+
 	
 	<%= yield %>
 

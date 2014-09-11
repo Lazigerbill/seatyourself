@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  get 'seatyourself/about'
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :sessions, only: [:new, :create, :destroy] 
   resources :business_users
@@ -13,7 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :seatyourself
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,4 +1,5 @@
 class BusinessUsersController < ApplicationController
+  layout "business_user"
   def index
   	@business_user = BusinessUser.all
     @restaurant = Restaurant.all
