@@ -3,8 +3,17 @@
 
 <!-- All the registered restaurants are listed here -->
 <h3>Here are all the restaurants that have joined us:</h3>
+
 <% @restaurants.each do |restaurant|%>
-<%= link_to restaurant.name, restaurant_path(restaurant) %>
-<%= restaurant.phone %>
-<br>
+
+<div class="restaurant">
+		<%= image_tag(restaurant.picture_url, class: 'index_pic') %>
+		<%= link_to restaurant.name, restaurant_path(restaurant), {:class => "name"} %></br>
+		<%= restaurant.cuisine %></br>
+		<%= restaurant.phone %></br>
+		<%= restaurant.address %>
+</div>
+
 <% end %>
+
+<br>

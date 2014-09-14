@@ -1,3 +1,54 @@
 // Place all the styles related to the seatyourself controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+	background-image: url(http://wallpaphd.com/wp-content/uploads/2014/04/gunnel-bildt-restaurant-134.jpg);
+	background-size: 100%;
+}
+
+
+
+td{
+	border: 2px solid white;
+	width: 200px;
+	margin: 0px;
+}
+
+h1{
+	margin-left: 20px;
+	font-family: 'Lobster';
+	color: white;
+	font-size: 42px;
+}
+
+h3{
+	margin-left: 20px;
+	font-family: 'Verdana';
+	color: white;
+	font-size: 16px;
+}
+
+div.restaurant{
+	font-weight: heavy;
+	margin: 5px 20px;
+	height: 75px;
+	width: 500px;
+	padding: 10px;
+	background-color: rgba(255,236,205,0.75);
+	border: 1px solid rgb(178,112,0);
+	border-radius: 6px;
+}
+
+div.restaurant > a{
+		font-weight: bold;
+}
+
+.index_pic{
+	float: left;
+	width: 80px;
+	height: 80px;
+	border-radius: 100%;
+	margin-right: 10px;
+
+}

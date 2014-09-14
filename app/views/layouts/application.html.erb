@@ -9,45 +9,47 @@ the key features are:
   <title>Seatyourself</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<!-- Notices and alerts are handled here -->
-	<% if flash[:notice] %>
-		<div class = "notice"><%= flash[:notice] %></div>
-	<% end %>
-	<% if flash[:alert] %>
-		<div class = "flash"><%= flash[:alert] %></div>
-	<% end %>	
+<!-- This is the navigation bar -->
+	<nav>
+		<%= link_to "SeatYouself", seatyourself_index_path,{:class => 'title'} %>
+		<%= link_to "About", seatyourself_about_path %>
+		<%= link_to "Business Users", business_users_path, {:class => 'button'} %>
+	</nav>
 <!-- Check session status here, ask user to log in or sign out -->
-	<p>	
-	<% if current_user %>
-	 	Hello, <%= current_user.first_name %> <%= current_user.last_name %>!
+<div class="login">	
+	
+<% if current_user %>
 	 	You are signed in as <%= current_user.email %>. <%= link_to "Log out", user_session_path("current"), :method => :delete %>
 	 	<%= link_to "Manage my reservations", user_path(current_user) %>
 	<% else%>
-	Log in:
 		<%= form_tag user_sessions_path do %>
-			<%= label_tag :email, "email:" %>
-			<%= text_field_tag :email %>
-			<%= label_tag :password,"password:" %>
-			<%= password_field_tag :password %>
+			<%= label_tag :email, "Log in: " %>
+			<%= text_field_tag :email, nil, placeholder: 'email' %>
+			<%= label_tag :password,"password: " %>
+			<%= password_field_tag :password, nil, placeholder: 'password' %>
 			<%= submit_tag "Log in" %>
+			<span class="signup">Don't have an account? <%= link_to "Sign up here!", new_user_path %></span>
 		<% end %> 
-	or <%= link_to "Sign up", new_user_path %>.
-	<h5>Business Users <%= link_to ">>enter here<<", business_users_path %></h5>
 	<% end %>
-	</p>
-<!-- This is the navigation bar -->
-	<nav>
-		<%= link_to "Home", seatyourself_index_path %>
-		<%= link_to "About", seatyourself_about_path %>
-	</nav>
+</div>
 
+<!-- Notices and alerts are handled here -->
+	
+<div>	<% if flash[:notice] %>
+		<div class = "notice"><%= flash[:notice] %></div>
+	<% end %>
+	<% if flash[:alert] %>
+		<div class = "alert"><%= flash[:alert] %></div>
+	<% end %>	
+</div>
 
 	<%= yield %>
 
-
-
 </body>
+<footer><p>hello</p></footer>
+
 </html>

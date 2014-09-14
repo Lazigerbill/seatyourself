@@ -17,6 +17,7 @@ class RestaurantsController < ApplicationController
 
   def edit
     @restaurant = current_bu.restaurants.find(params[:id])
+    render :layout => "business_user"
   end
 
   def update

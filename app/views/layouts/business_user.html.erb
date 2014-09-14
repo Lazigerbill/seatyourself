@@ -1,44 +1,49 @@
 <!-- This is the layout specifically for business users
 the key features are:
 	check login status
-	show notices and alerts --><!DOCTYPE html>
+	show notices and alerts -->
+<!DOCTYPE html>
 <html>
 <head>
   <title>Seatyourself</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<!-- Notices and alerts are handled here -->
-	<% if flash[:notice] %>
-		<div class = "notice"><%= flash[:notice] %></div>
-	<% end %>
-	<% if flash[:alert] %>
-		<div class = "flash"><%= flash[:alert] %></div>
-	<% end %>
+<!-- This is the navigation bar -->
+	<nav>
+		<%= link_to "SeatYouself", seatyourself_index_path,{:class => 'title'} %>
+		<%= link_to "About", seatyourself_about_path %>
+		<span class="button">Business Users</span>
+	</nav>
 <!-- Check session status here, ask business user to log in or sign out -->
-	<p>	
+	<div class="login">	
 		<% if current_bu %>
 		 	Wecome back, <%= current_bu.username %>!
 		 	You are signed in as <%= current_bu.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
 		<% else %>
 			<%= form_tag sessions_path do %>
-			<%= label_tag :username %>
-			<%= text_field_tag :username %>
+			<%= label_tag :username, "Log in : " %>
+			<%= text_field_tag :username, nil, placeholder: 'username' %>
 			<%= label_tag :password %>
-			<%= password_field_tag :password %>
+			<%= password_field_tag :password, nil, placeholder: "******" %>
 			<%= submit_tag "Log in" %>
+			<span class="signup"><%= link_to "Sign up", new_business_user_path %></span>
 			<% end %> 
-			or <%= link_to "Sign up", new_business_user_path %>
 		<% end %>
-	</p>
-<!-- This is the navigation bar -->
-	<nav>
-		<%= link_to "Home", seatyourself_index_path %>
-		<%= link_to "About", seatyourself_about_path %>
-	</nav>
+	</div>
 
+<!-- Notices and alerts are handled here -->
+	
+<div>	<% if flash[:notice] %>
+		<div class = "notice"><%= flash[:notice] %></div>
+	<% end %>
+	<% if flash[:alert] %>
+		<div class = "alert"><%= flash[:alert] %></div>
+	<% end %>	
+</div>
 
 	
 	<%= yield %>

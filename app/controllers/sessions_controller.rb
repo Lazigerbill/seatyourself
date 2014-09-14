@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   	user = BusinessUser.find_by(username: params[:username])
   	if user && user.authenticate(params[:password])
   		session[:user_id] = user.id
-  		redirect_to business_user_path(user), notice: "Logged in!"
+  		redirect_to business_user_path(user), notice: "Logged in! Welcome back,#{user.username}"
   	else
   		flash.now[:alert] = "Invalid user name or password"
       @restaurants = Restaurant.all

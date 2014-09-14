@@ -1,0 +1,93 @@
+// Place all the styles related to the business_user controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+	background-image: url(http://amerimerchant.com/blog/wp-content/uploads/2014/03/restaurant-advice.jpg);
+	background-size: 100%;
+}
+
+div.bu_login{
+/*	position: relative;*/
+	border: 1px solid black;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	background-color: rgba(255,255,0,0.7);
+	padding: 5px;
+	font-family: 'Lobster';
+}
+
+span.signup{
+	float: right;
+	margin-right: 20px;
+}
+
+nav > a{
+	font-size: 20px;
+	display: inline-block;
+	font-family: 'Lobster';
+	color: white;
+	text-decoration: none;
+	margin: 10px 20px;
+}
+nav{
+	position: relative;
+	top: 0px;
+	display: inline-block;
+/*	padding: 5px;*/
+	background-color: red;
+	color: white;
+	font-size: 20px;
+	height: 45px;
+	width: 100%;
+
+}
+
+.button{
+	float: right;
+	margin: 5px 20px;	
+	border-radius: 5px;
+	background-color: red;
+	color: white;
+	padding: 5px;
+	text-decoration: none;
+	font-family: 'Lobster';
+}
+
+.alert{
+	background-color: rgba(255,0,0,0.3);
+	color: red;
+	width: 330px;
+	border-radius: 5px;
+	text-align: center;
+	padding: 15px;
+	margin: 15px;
+
+}
+
+.notice{
+	background-color: rgba(0,209,86,0.2);
+	color: white;
+	width: 330px;
+	border-radius: 5px;
+	text-align: center;
+	padding: 15px;
+	margin: 15px;
+}
+
+/****************/
+.bu_profile{
+	width: 25%;
+	border: 1px solid red;
+	border-radius: 5px;
+	background-color: rgba(255,0,0,0.3);
+	padding: 10px;
+	margin: 20px;
+}
+
+h1{
+	margin-left: 20px;
+	font-family: 'Verdana';
+	color: white;
+	font-size: 12px;
+}
