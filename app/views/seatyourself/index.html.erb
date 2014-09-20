@@ -4,16 +4,15 @@
 <!-- All the registered restaurants are listed here -->
 <h3>Here are all the restaurants that have joined us:</h3>
 
-<% @restaurants.each do |restaurant|%>
+<%= form_tag seatyourself_index_path, method: :get, authentication: false, id: "search-form" do %>
+	<%= text_field_tag :search, params[:search], placeholder: "Find a restaurant" %>
+	<%= submit_tag "Search" %>
+<% end %>
 
-<div class="restaurant">
-		<%= image_tag(restaurant.picture_url, class: 'index_pic') %>
-		<%= link_to restaurant.name, restaurant_path(restaurant), {:class => "name"} %></br>
-		<%= restaurant.cuisine %></br>
-		<%= restaurant.phone %></br>
-		<%= restaurant.address %>
+<div id = "restaurants">
+	<%= render @restaurants %>
 </div>
 
-<% end %>
+
 
 <br>

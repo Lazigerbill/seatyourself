@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909200835) do
+ActiveRecord::Schema.define(version: 20140920212550) do
 
   create_table "business_users", force: true do |t|
     t.string   "email"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140909200835) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.integer  "phone"
+    t.string   "phone"
     t.string   "address"
     t.string   "cuisine"
     t.string   "picture_url"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20140909200835) do
     t.integer  "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "user_type"
   end
 
 end

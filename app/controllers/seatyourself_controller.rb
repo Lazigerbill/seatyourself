@@ -1,10 +1,16 @@
 class SeatyourselfController < ApplicationController
   def index
-  	  @restaurants = Restaurant.all
+  	@restaurants = if params[:search]
+  		Restaurant.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
+  	else
+  	  	Restaurant.all
+  	end
   end
+
   def show
   	@restaurant = Restaurant.find(params[:id])
   end
+
   def about
   end
 end

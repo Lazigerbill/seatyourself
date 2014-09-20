@@ -43,3 +43,7 @@ gem 'hirb', '~> 0.7.2'
 # gem 'pry-rails', :group => :development
 
 gem 'kaminari'
+
+gem 'faker'
+
+

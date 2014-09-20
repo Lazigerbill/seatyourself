@@ -1,0 +1,8 @@
+<div class="restaurant">
+		<%= image_tag(restaurant.picture_url, class: 'index_pic') %>
+		<%= link_to restaurant.name, restaurant_path(restaurant), {:class => "name"} %></br>
+		<%= restaurant.cuisine %></br>
+		<%= restaurant.phone %></br>
+		<%= restaurant.address %>
+</div>
+
