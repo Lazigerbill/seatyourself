@@ -5,6 +5,11 @@ class SeatyourselfController < ApplicationController
   	else
   	  	Restaurant.all
   	end
+
+  	if request.xhr?
+  		render @restaurants
+  	end
+  	
   end
 
   def show

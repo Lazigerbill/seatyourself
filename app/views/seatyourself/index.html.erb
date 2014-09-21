@@ -4,7 +4,7 @@
 <!-- All the registered restaurants are listed here -->
 <h3>Here are all the restaurants that have joined us:</h3>
 
-<%= form_tag seatyourself_index_path, method: :get, authentication: false, id: "search-form" do %>
+<%= form_tag restaurants_path, method: :get, authentication: false, id: "search-form" do %>
 	<%= text_field_tag :search, params[:search], placeholder: "Find a restaurant" %>
 	<%= submit_tag "Search" %>
 <% end %>
