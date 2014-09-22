@@ -503,3 +503,14 @@ a.button{
 	padding: 15px;
 	margin: 15px;
 }
+.head{
+  position: fixed;
+  width: 100%;
+  top: 0px;
+}
+
+.main{
+  position: absolute;
+  z-index: -1;
+  top: 100px;
+}

@@ -13,7 +13,8 @@ the key features are:
   <%= csrf_meta_tags %>
 </head>
 <body>
-<!-- This is the navigation bar -->
+<div class= "head">
+	<!-- This is the navigation bar -->
 	<nav>
 		<%= link_to "SeatYouself", seatyourself_index_path,{:class => 'title'} %>
 		<%= link_to "About", seatyourself_about_path %>
@@ -36,18 +37,22 @@ the key features are:
 		<% end %> 
 	<% end %>
 </div>
-
-<!-- Notices and alerts are handled here -->
-	
-<div>	<% if flash[:notice] %>
-		<div class = "notice"><%= flash[:notice] %></div>
-	<% end %>
-	<% if flash[:alert] %>
-		<div class = "alert"><%= flash[:alert] %></div>
-	<% end %>	
 </div>
 
+<div class = "main">
+	<!-- Notices and alerts are handled here -->
+	<div>	
+		<% if flash[:notice] %>
+			<div class = "notice"><%= flash[:notice] %></div>
+		<% end %>
+		<% if flash[:alert] %>
+			<div class = "alert"><%= flash[:alert] %></div>
+		<% end %>	
+	</div>
+
 	<%= yield %>
+
+</div>
 
 </body>
 <footer><p>hello</p></footer>
